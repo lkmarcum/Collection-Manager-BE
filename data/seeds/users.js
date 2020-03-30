@@ -4,10 +4,10 @@ exports.seed = function(knex) {
     .truncate()
     .then(function() {
       // Inserts seed entries
-      return knex("table_name").insert([
-        { id: 1, username: "test1", password: "pw1" },
-        { id: 2, username: "test2", password: "pw2" },
-        { id: 3, username: "test3", password: "pw3" }
+      return knex("users").insert([
+        { username: "test1", password: "pw1" },
+        { username: "test2", password: "pw2" },
+        { username: "test3", password: "pw3" }
       ]);
     });
 };
