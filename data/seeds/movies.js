@@ -5,19 +5,19 @@ exports.seed = function(knex) {
     .then(function() {
       // Inserts seed entries
       return knex("movies").insert([
-        { collection_id: 1, title: "Side Effects", genre: "Drama" },
-        { collection_id: 1, title: "Wedding Crashers", genre: "Comedy" },
-        { collection_id: 1, title: "Law Abiding Citizen", genre: "Action" },
+        { collection_id: 4, title: "Side Effects", genre: "Drama" },
+        { collection_id: 4, title: "Wedding Crashers", genre: "Comedy" },
+        { collection_id: 4, title: "Law Abiding Citizen", genre: "Action" },
         {
-          collection_id: 2,
+          collection_id: 5,
           title: "Crazy Stupid Love",
           genre: "Romantic Comedy"
         },
-        { collection_id: 2, title: "Lincoln", genre: "Drama" },
-        { collection_id: 2, title: "The Rookie", genre: "Sports" },
-        { collection_id: 3, title: "12 Angry Men", genre: "Drama" },
-        { collection_id: 3, title: "A Few Good Men", genre: "Drama" },
-        { collection_id: 3, title: "The Martion", genre: "Sci-Fi" }
+        { collection_id: 5, title: "Lincoln", genre: "Drama" },
+        { collection_id: 5, title: "The Rookie", genre: "Sports" },
+        { collection_id: 6, title: "12 Angry Men", genre: "Drama" },
+        { collection_id: 6, title: "A Few Good Men", genre: "Drama" },
+        { collection_id: 6, title: "The Martion", genre: "Sci-Fi" }
       ]);
     });
 };
