@@ -5,11 +5,11 @@ module.exports = {
   update,
   remove,
   getAll,
-  findById
+  findById,
 };
 
 async function insert(user) {
-  return null;
+  return db("users").insert(userData).returning("username");
 }
 
 async function update(id, changes) {
