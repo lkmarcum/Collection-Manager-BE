@@ -98,6 +98,7 @@ server.get("/collections/:id", (req, res) => {
   console.log(`Param ID: ${req.params.id}`);
   Collections.findById(req.params.id)
     .then((res) => {
+      console.log(`Res: ${res}`);
       res.status(200).json(res);
     })
     .catch((err) => {
