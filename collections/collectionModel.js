@@ -16,7 +16,7 @@ function findByOwner(owner_id) {
 }
 
 function findById(id) {
-  return db("collections").where({ id }).first();
+  return db("collections").where({ id });
 }
 
 function getAll() {
