@@ -95,6 +95,7 @@ server.post("/collections", (req, res) => {
 });
 
 server.get("/collections/:id", (req, res) => {
+  console.log(`Param ID: ${req.params.id}`);
   Collections.findById(req.params.id)
     .then((res) => {
       res.status(200).json(res);
