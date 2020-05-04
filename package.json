@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.13",
+    "pg": "^8.0.0",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "name": "Collection-Manager-BE",
+  "version": "1.0.0",
+  "description": "Application to manage personal media collections",
+  "main": "index.js",
+  "repository": "https://github.com/lkmarcum/Collection-Manager-BE.git",
+  "author": "Larry Marcum & Greg Johnston",
+  "license": "MIT"
+}
