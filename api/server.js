@@ -100,7 +100,7 @@ server.get("/collections/:id", (req, res) => {
     .then((collection) => {
       console.log(`collection: ${collection}`);
       // const coll = res[0];
-      res.status(200);
+      res.status(200).json(collection[0]);
     })
     .catch((err) => {
       res.status(500).json(err);
