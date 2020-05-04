@@ -2,6 +2,8 @@ const express = require("express");
 require("dotenv").config();
 
 const Users = require("../users/userModel.js");
+const Movies = require("../movies/movieModel");
+const Collections = require("../collections/collectionModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -76,5 +78,30 @@ function generateToken(user) {
 
   return jwt.sign(payload, process.env.JWT_SECRET, options);
 }
+
+server.post("/collections", (req, res) => {
+  const collection = req.body;
+
+  Collections.insert(collection)
+    .then((id) => {
+      res.status(201).json({
+        message: `Collection created`,
+        id,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.get("/collections/:id", (req, res) => {
+  Collections.findById(req.params.id)
+    .then((res) => {
+      res.status(200).json({ collection: res });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 module.exports = server;
