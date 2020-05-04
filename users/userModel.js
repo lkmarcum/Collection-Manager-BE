@@ -6,10 +6,11 @@ module.exports = {
   remove,
   getAll,
   findById,
+  findByUsername,
 };
 
 async function insert(user) {
-  return db("users").insert(user).returning("username");
+  return db("users").insert(user).returning(user.username);
 }
 
 async function update(id, changes) {
@@ -26,4 +27,8 @@ function getAll() {
 
 function findById(id) {
   return null;
+}
+
+function findByUsername(username) {
+  return db("users").where({ username }).first();
 }

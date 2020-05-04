@@ -1,7 +1,9 @@
 const express = require("express");
+require("dotenv").config();
 
 const Users = require("../users/userModel.js");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const server = express();
 
@@ -30,7 +32,7 @@ server.post("/register", (req, res) => {
   })
     .then((user) => {
       res.status(201).json({
-        message: `The user ${user.username} has successfully been created.`,
+        message: `The user ${user} has successfully been created.`,
       });
     })
     .catch((err) => {
@@ -39,5 +41,40 @@ server.post("/register", (req, res) => {
       });
     });
 });
+
+server.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  Users.findByUsername(username)
+    .first()
+    .then((user) => {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        const token = generateToken(user);
+
+        res.status(200).json({
+          message: `Welcome ${user.username}`,
+          token,
+        });
+      } else {
+        return res.status(401).json({ error: "Incorrect credentials" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+function generateToken(user) {
+  const payload = {
+    subject: user.id,
+    payload: user.username,
+  };
+
+  const options = {
+    expiresIn: "1d",
+  };
+
+  return jwt.sign(payload, process.env.JWT_SECRET, options);
+}
 
 module.exports = server;
