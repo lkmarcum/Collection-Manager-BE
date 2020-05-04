@@ -97,7 +97,7 @@ server.post("/collections", (req, res) => {
 server.get("/collections/:id", (req, res) => {
   Collections.findById(req.params.id)
     .then((res) => {
-      res.status(200).json({ collection: res });
+      res.status(200).json(res);
     })
     .catch((err) => {
       res.status(500).json(err);
