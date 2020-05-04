@@ -98,9 +98,9 @@ server.get("/collections/:id", (req, res) => {
   console.log(`Param ID: ${req.params.id}`);
   Collections.findById(req.params.id)
     .then((collection) => {
-      console.log(`collection: ${collection}`);
+      console.log(`collection: ${collection[0]}`);
       // const coll = res[0];
-      res.status(200).json(collection[0]);
+      res.status(200).json({ data: collection[0] });
     })
     .catch((err) => {
       res.status(500).json(err);
