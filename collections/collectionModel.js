@@ -4,6 +4,7 @@ module.exports = {
   insert,
   findByOwner,
   findById,
+  getAll,
 };
 
 async function insert(collection) {
@@ -16,4 +17,8 @@ function findByOwner(owner_id) {
 
 function findById(id) {
   return db("collections").where({ id }).first();
+}
+
+function getAll() {
+  return db("collections");
 }

@@ -99,10 +99,21 @@ server.get("/collections/:id", (req, res) => {
   Collections.findById(req.params.id)
     .then((res) => {
       console.log(`Res: ${res[0]}`);
-      res.status(200).json(res[0]);
+      const coll = res[0];
+      res.status(200).json(coll);
     })
     .catch((err) => {
       res.status(500).json(err);
+    });
+});
+
+server.get("/collections", (req, res) => {
+  Collections.getAll()
+    .then((collections) => {
+      res.status(200).json(collections);
+    })
+    .catch((error) => {
+      res.status(500).json(error);
     });
 });
 
