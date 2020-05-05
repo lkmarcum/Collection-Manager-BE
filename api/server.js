@@ -128,4 +128,49 @@ server.get("/collections/owner/:id", (req, res) => {
     });
 });
 
+server.pos("/movies", (req, res) => {
+  const movie = req.body;
+
+  Movies.insert(movie)
+    .then((id) => {
+      res.status(201).json({
+        message: "Movie created",
+        id,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.get("/movies", (req, res) => {
+  Movies.getAll()
+    .then((movies) => {
+      res.status(200).json(movies);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.get("/movies/:id", (req, res) => {
+  Movies.findById(req.params.id)
+    .then((movie) => {
+      res.status(200).json(movie[0]);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.get("/movies/collection/:id", (req, res) => {
+  Movies.findByCollection(req.params.id)
+    .then((list) => {
+      res.status(200).json({ movies: list });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = server;
