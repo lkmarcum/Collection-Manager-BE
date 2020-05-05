@@ -128,7 +128,7 @@ server.get("/collections/owner/:id", (req, res) => {
     });
 });
 
-server.pos("/movies", (req, res) => {
+server.post("/movies", (req, res) => {
   const movie = req.body;
 
   Movies.insert(movie)
