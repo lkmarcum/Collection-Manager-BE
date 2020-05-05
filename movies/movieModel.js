@@ -4,10 +4,11 @@ module.exports = {
   insert,
   findByCollection,
   findById,
+  getAll,
 };
 
 async function insert(movie) {
-  return db("movies").insert(collection).returning("id");
+  return db("movies").insert(movie).returning("id");
 }
 
 function findByCollection(collection_id) {
@@ -15,5 +16,9 @@ function findByCollection(collection_id) {
 }
 
 function findById(id) {
-  return db("movies").where({ id }).first();
+  return db("movies").where({ id });
+}
+
+function getAll() {
+  return db("movies");
 }
