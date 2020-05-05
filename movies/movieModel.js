@@ -8,7 +8,7 @@ module.exports = {
 };
 
 async function insert(movie) {
-  return db("movies").insert(collection).returning("id");
+  return db("movies").insert(movie).returning("id");
 }
 
 function findByCollection(collection_id) {
