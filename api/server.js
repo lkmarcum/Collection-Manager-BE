@@ -6,6 +6,7 @@ const Movies = require("../movies/movieModel");
 const Collections = require("../collections/collectionModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { restricted } = require("../middleware/middleware");
 
 const server = express();
 
@@ -79,7 +80,7 @@ function generateToken(user) {
   return jwt.sign(payload, process.env.JWT_SECRET, options);
 }
 
-server.post("/collections", (req, res) => {
+server.post("/collections", restricted, (req, res) => {
   const collection = req.body;
 
   Collections.insert(collection)
@@ -128,7 +129,7 @@ server.get("/collections/owner/:id", (req, res) => {
     });
 });
 
-server.post("/movies", (req, res) => {
+server.post("/movies", restricted, (req, res) => {
   const movie = req.body;
 
   Movies.insert(movie)
