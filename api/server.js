@@ -55,7 +55,7 @@ server.post("/login", (req, res) => {
         const token = generateToken(user);
 
         res.status(200).json({
-          message: `Welcome ${user.username}`,
+          id: user.id,
           token,
         });
       } else {
