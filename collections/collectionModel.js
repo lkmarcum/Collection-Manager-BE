@@ -17,8 +17,8 @@ function getAll() {
 }
 
 function findByOwner(owner_id) {
-  // return db("collections").where({ owner_id });
-  return knex.raw(`SELECT * from collections where owner_id = ${owner_id}`);
+  return db("collections").where({ owner_id });
+  // return knex.raw(`SELECT * from collections where owner_id = ${owner_id}`);
 }
 
 function findById(id, table) {
