@@ -16,9 +16,7 @@ function findByOwner(owner_id) {
 }
 
 function findById(id, table) {
-  return db("collections")
-    .where({ id })
-    .join(table, { "collections.id": `${table}.collection_id` });
+  return db(table).where({ collection_id: id });
 }
 
 function getAll() {
