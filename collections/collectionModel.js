@@ -15,8 +15,8 @@ function findByOwner(owner_id) {
   return db("collections").where({ owner_id });
 }
 
-function findById(id) {
-  return db("collections").where({ id });
+function findById(id, table) {
+  return db(table).where({ collection_id: id });
 }
 
 function getAll() {

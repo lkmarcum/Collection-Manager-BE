@@ -1,5 +1,5 @@
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable("collections", tbl => {
+exports.up = function (knex, Promise) {
+  return knex.schema.createTable("collections", (tbl) => {
     tbl.increments();
 
     tbl
@@ -12,10 +12,11 @@ exports.up = function(knex, Promise) {
       .onUpdate("CASCADE")
       .index();
     tbl.string("title", 255).notNullable();
+    tbl.string("media_type", 255).notNullable();
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   // undo the operation in up
   return knex.schema.dropTableIfExists("collections");
 };
