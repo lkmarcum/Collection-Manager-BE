@@ -1,5 +1,4 @@
 const db = require("../data/dbConfig.js");
-const knex = require("knex");
 
 module.exports = {
   insert,
@@ -17,8 +16,8 @@ function getAll() {
 }
 
 function findByOwner(owner_id) {
-  return db("collections").where({ owner_id });
-  // return knex.raw(`SELECT * from collections where owner_id = ${owner_id}`);
+  // return db("collections").where({ owner_id });
+  return db.raw(`SELECT * from collections where owner_id = ${owner_id}`);
 }
 
 function findById(id, table) {
