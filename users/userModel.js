@@ -10,7 +10,7 @@ module.exports = {
 };
 
 async function insert(user) {
-  return db("users").insert(user).returning(user.username);
+  return db("users").insert(user).returning("username");
 }
 
 async function update(id, changes) {

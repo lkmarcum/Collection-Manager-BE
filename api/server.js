@@ -119,10 +119,10 @@ server.get("/collections", (req, res) => {
     });
 });
 
-server.get("/collections/owner/:id", (req, res) => {
-  Collections.findByOwner(req.params.id)
+server.get("/collections/:owner_id", (req, res) => {
+  Collections.findByOwner(req.params.owner_id)
     .then((list) => {
-      res.status(200).json({ collections: list });
+      res.status(200).json(list);
     })
     .catch((err) => {
       res.status(500).json(err);
